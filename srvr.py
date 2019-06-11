@@ -14,8 +14,12 @@ class Handler(server.BaseHTTPRequestHandler):
 
     def do_GET(self):
         self._set_headers()
-        self.wfile.write(str.encode("%s" %names))
-
+        pth = self.path.split('/')[1:]
+        print(pth)
+        if(pth[0] == 'wifi'):
+            self.wfile.write(str.encode("%s" %names))
+        else:
+            self.wfile.write(b'You Have Reached The Pi, Congrats!')
     def do_HEAD(self):
         self._set_headers()
 
