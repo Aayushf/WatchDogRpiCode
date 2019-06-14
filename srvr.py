@@ -10,8 +10,7 @@ def save_wifi(path):
         w = q.split('=')
         qdict[w[0]] = w[1]
     print(qdict)
-    block = ("""
-network={
+    block = ("""network={
         ssid="%s"
         psk="%s"
         key_mgmt=WPA-PSK
