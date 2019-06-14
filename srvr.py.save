@@ -1,6 +1,5 @@
 from http import server
 from wifi import Cell, Scheme
-import time
 def save_wifi(path):
     qstring = path.split('?')[1]
     print(qstring)
@@ -11,7 +10,9 @@ def save_wifi(path):
         w = q.split('=')
         qdict[w[0]] = w[1]
     print(qdict)
-    block = ("""network={
+    block = (
+"""
+network={
         ssid="%s"
         psk="%s"
         key_mgmt=WPA-PSK
@@ -20,7 +21,7 @@ def save_wifi(path):
     with open('/etc/wpa_supplicant/wpa_supplicant-wlan0.conf', 'a') as f:
         f.write(block)
         f.close()
-time.sleep(10)
+
 n = 'yo'
 nets = list(Cell.all('wlan0'))
 print(nets)
